@@ -1,9 +1,5 @@
 const display = document.getElementById("display");
 
-document.addEventListener('touchmove', function(e) {
-  e.preventDefault();
-}, { passive: false });
-
 function add(value) {
   display.value += value;
   vibrate();
