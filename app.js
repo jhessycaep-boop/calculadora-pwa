@@ -66,8 +66,8 @@ function renderHistory() {
 
 window.onload = renderHistory;
 
-window.onerror = function(msg) {
-  alert("Erro: " + msg);
+window.onerror = function(msg, url, line) {
+  alert(`Erro: ${msg}\nLinha: ${line}`);
 };
 
 function vibrate() {
