@@ -1,3 +1,5 @@
+'use strict';
+
 const display = document.getElementById("display");
 
 function add(value) {
@@ -12,7 +14,7 @@ function clearDisplay() {
 
 function del() {
   display.value = display.value.slice(0, -1);
-  vibrate():
+  vibrate();
 }
 
 function calculate() {
