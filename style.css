@@ -53,6 +53,11 @@ button {
   border: none;
 }
 
+button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
 .equal {
   grid-column: span 2;
   background: #34c759;
