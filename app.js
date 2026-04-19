@@ -1,5 +1,9 @@
 const display = document.getElementById("display");
 
+document.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
 function add(value) {
   display.value += value;
 }
@@ -14,7 +18,16 @@ function del() {
 
 function calculate() {
   try {
-    display.value = Function('return ' + display.value)();
+    let expression = display.value.replace(/%/g, "/100");
+
+    let result = Function('return ' + expression)();
+
+    if (!isFinite(result)) {
+      display.value = "Erro";
+      return;
+    }
+
+    display.value = result;
   } catch {
     display.value = "Erro";
   }
