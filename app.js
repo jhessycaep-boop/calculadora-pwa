@@ -40,6 +40,7 @@ function calculate() {
   } catch {
     display.value = "Erro";
   }
+  vibrate();
 }
 
 function saveToHistory(expression, result) {
