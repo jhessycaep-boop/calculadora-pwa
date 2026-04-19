@@ -4,16 +4,19 @@ const display = document.getElementById("display");
 
 function add(value) {
   display.value += value;
+  alert(navigator.vibrate ? "tem vibrate" : "não tem vibrate");
   vibrate();
 }
 
 function clearDisplay() {
   display.value = "";
+  alert(navigator.vibrate ? "tem vibrate" : "não tem vibrate");
   vibrate();
 }
 
 function del() {
   display.value = display.value.slice(0, -1);
+  alert(navigator.vibrate ? "tem vibrate" : "não tem vibrate");
   vibrate();
 }
 
@@ -38,6 +41,7 @@ function calculate() {
   } catch {
     display.value = "Erro";
   }
+  alert(navigator.vibrate ? "tem vibrate" : "não tem vibrate");
   vibrate();
 }
 
@@ -62,8 +66,12 @@ function renderHistory() {
 
 window.onload = renderHistory;
 
+window.onerror = function(msg) {
+  alert("Erro: " + msg);
+};
+
 function vibrate() {
-  if (navigator.vibrate) navigator.vibrate(10);
+  if (navigator.vibrate) navigator.vibrate([50, 30, 50]);
 }
 
 // Registrar Service Worker
