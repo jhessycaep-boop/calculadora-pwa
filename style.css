@@ -40,6 +40,10 @@ body {
   opacity: 0.8;
 }
 
+#history {
+  user-select: none;
+}
+
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
