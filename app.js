@@ -39,6 +39,27 @@ function calculate() {
   }
 }
 
+function saveToHistory(expression, result) {
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  history.unshift(`${expression} = ${result}`);
+
+  if (history.length > 10) history.pop();
+
+  localStorage.setItem("history", JSON.stringify(history));
+
+  renderHistory();
+}
+
+function renderHistory() {
+  let historyDiv = document.getElementById("history");
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  historyDiv.innerHTML = history.map(item => `<div>${item}</div>`).join("");
+}
+
+window.onload = renderHistory;
+
 // Registrar Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
