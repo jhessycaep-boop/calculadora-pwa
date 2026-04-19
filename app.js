@@ -18,7 +18,11 @@ function del() {
 
 function calculate() {
   try {
-    let expression = display.value.replace(/%/g, "/100");
+    let expression = display.value
+      .replace(/%/g, "/100")
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/");
+    
 
     let result = Function('return ' + expression)();
 
@@ -26,6 +30,8 @@ function calculate() {
       display.value = "Erro";
       return;
     }
+
+    saveToHistory(display.value, result);
 
     display.value = result;
   } catch {
