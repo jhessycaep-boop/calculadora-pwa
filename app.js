@@ -6,14 +6,17 @@ document.addEventListener('touchmove', function(e) {
 
 function add(value) {
   display.value += value;
+  vibrate();
 }
 
 function clearDisplay() {
   display.value = "";
+  vibrate();
 }
 
 function del() {
   display.value = display.value.slice(0, -1);
+  vibrate():
 }
 
 function calculate() {
@@ -59,6 +62,10 @@ function renderHistory() {
 }
 
 window.onload = renderHistory;
+
+function vibrate() {
+  if (navigator.vibrate) navigator.vibrate(10);
+}
 
 // Registrar Service Worker
 if ('serviceWorker' in navigator) {
